@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pencatatan Pengeluaran</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ini penting -->
+    <script type="module" src="app.js"></script>
+
+    <header>
+      <h1>Pencatatan Pengeluaran</h1>
+      <p>Ayo Kelola Keuangan Bulanan Kamu</p>
+    </header>
+
+    <!-- NOTIF PERINGATAN BUDGET -->
+    <div id="alert-budget" class="alert-warning" style="display: none">
+      ⚠️ Budget bulan ini sudah melebihi batas!
+    </div>
+
+    <!-- 1. STATISTIC SECTION -->
+    <section class="stats-grid">
+      <div class="stat-card" id="card-total">
+        <p class="stat-label">Total Pengeluaran</p>
+        <p class="stat-value" id="stat-total">Rp 0</p>
+      </div>
+      <div class="stat-card" id="card-month">
+        <p class="stat-label">Bulan Ini</p>
+        <p class="stat-value" id="stat-month">Rp 0</p>
+      </div>
+      <div class="stat-card" id="card-budget">
+        <p class="stat-label">Sisa Budget</p>
+        <p class="stat-value" id="stat-budget">Rp 1.500.000</p>
+      </div>
+    </section>
+
+    <!-- 2. FORM SECTION -->
+    <section class="form-container">
+      <form id="expense-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="desc">Deskripsi</label>
+            <input
+              type="text"
+              id="desc"
+              placeholder="Cth: Makan siang"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="amount">Nominal (Rp)</label>
+            <input
+              type="number"
+              id="amount"
+              placeholder="50000"
+              min="1"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="category">Kategori</label>
+            <select id="category" required>
+              <option value="Makan">Makan</option>
+              <option value="Transport">Transport</option>
+              <option value="Kuota">Kuota</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <button type="submit" class="btn-primary" id="btn-submit">
+              Tambah
+            </button>
+            <button type="button" class="btn-cancel" id="btn-cancel">
+              Batal
+            </button>
+          </div>
+        </div>
+        <!-- Hidden field untuk menyimpan ID saat mode Edit -->
+        <input type="hidden" id="edit-id" />
+      </form>
+    </section>
+
+    <!-- 3. TABLE SECTION -->
+    <section class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Deskripsi</th>
+            <th>Kategori</th>
+            <th>Nominal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="expense-list">
+          <!-- Default state saat data belum dimuat -->
+          <tr>
+            <td colspan="5" class="empty-state">Memuat data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>

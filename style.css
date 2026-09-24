@@ -1,0 +1,399 @@
+/* ===== VARIABEL ===== */
+:root {
+  --primary: #2563eb;
+  --danger: #ef4444;
+  --success: #10b981;
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+header p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ===== STATISTIK ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 16px;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+#card-budget.over .stat-value {
+  color: var(--danger);
+}
+
+/* ===== FORM ===== */
+.form-container {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 0 16px 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--text-main);
+  background: white;
+  outline: none;
+  width: 100%;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ===== TOMBOL FORM ===== */
+.btn-primary,
+.btn-cancel {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.15s,
+    transform 0.1s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  margin-bottom: 8px;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+.btn-cancel {
+  background: var(--border);
+  color: var(--text-muted);
+}
+
+.btn-cancel:active {
+  opacity: 0.75;
+}
+
+/* ===== TABLE (DESKTOP) ===== */
+.table-container {
+  background: var(--card-bg);
+  border-radius: 16px;
+  margin: 0 16px 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+thead tr {
+  background: var(--bg);
+  border-bottom: 2px solid var(--border);
+}
+
+thead th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 12px 14px;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+/* Kolom aksi tidak terlalu mepet */
+tbody td:last-child {
+  white-space: nowrap;
+  padding: 12px 20px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 16px !important;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ===== TOMBOL AKSI ===== */
+.action-btn {
+  padding: 6px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.15s,
+    transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-edit {
+  background: #dbeafe;
+  color: var(--primary);
+  margin-right: 8px;
+}
+
+.btn-edit:hover {
+  background: #bfdbfe;
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+}
+
+.action-btn:active {
+  opacity: 0.75;
+  transform: scale(0.97);
+}
+
+/* ===== MOBILE: TABLE → CARD ===== */
+@media (max-width: 480px) {
+  thead {
+    display: none;
+  }
+
+  .table-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0 16px;
+    margin: 0 0 32px;
+    overflow: visible;
+  }
+
+  table,
+  tbody {
+    display: block;
+    width: 100%;
+  }
+
+  /* Setiap row = card */
+  tbody tr {
+    display: block;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  tbody tr:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody td {
+    display: block;
+    padding: 2px 0;
+    border: none;
+    font-size: 0.9rem;
+  }
+
+  /* Tanggal */
+  tbody td:nth-child(1) {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  /* Deskripsi */
+  tbody td:nth-child(2) {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 2px;
+  }
+
+  /* Kategori */
+  tbody td:nth-child(3) {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  /* Nominal */
+  tbody td:nth-child(4) {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  /* Tombol aksi — di kanan, atas-bawah */
+  tbody td:nth-child(5) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+  }
+
+  tbody tr {
+    position: relative;
+    padding-right: 90px; /* beri ruang untuk tombol */
+  }
+
+  tbody td:nth-child(5) .action-btn {
+    width: 70px;
+    padding: 7px 0;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 0;
+  }
+
+  /* Empty state */
+  tbody tr.empty-row {
+    display: block;
+  }
+
+  tbody tr.empty-row td {
+    display: block;
+  }
+}
+
+/* ===== NOTIF PERINGATAN ===== */
+.alert-warning {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  color: #92400e;
+  padding: 12px 16px;
+  margin: 12px 16px 0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
