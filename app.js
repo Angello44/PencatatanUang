@@ -35,7 +35,7 @@ const formatRupiah = (angka) =>
     minimumFractionDigits: 0,
   }).format(angka);
 
-// Query urutkun berdasarkan waktu terbaru
+// Query mengurutkan berdasarkan waktu terbaru
 const q = query(expenseCollection, orderBy("createdAt", "desc"));
 
 onSnapshot(q, (snapshot) => {
@@ -111,7 +111,7 @@ onSnapshot(q, (snapshot) => {
   }
 });
 
-// 1. HANDLE FORM SUBMIT (CREATE / UPDATE)
+// 1. FORM SUBMIT (CREATE / UPDATE)
 document
   .getElementById("expense-form")
   .addEventListener("submit", async (e) => {
@@ -130,7 +130,7 @@ document
           category: category,
         });
       } else {
-        // MODE CREATE
+        // CREATE
         await addDoc(expenseCollection, {
           description: desc,
           amount: amount,
@@ -145,14 +145,14 @@ document
     }
   });
 
-// 2. FUNGSI DELETE (Harus global agar bisa dipanggil onclick di HTML)
+// 2. DELETE
 window.deleteExpense = async (id) => {
   if (confirm("Yakin ingin menghapus data ini?")) {
     await deleteDoc(doc(db, "expenses", id));
   }
 };
 
-// 3. FUNGSI EDIT (Mengisi form dengan data yang ada)
+// 3. FUNGSI EDIT 
 window.editExpense = (id, desc, amount, category) => {
   document.getElementById("desc").value = desc;
   document.getElementById("amount").value = amount;
